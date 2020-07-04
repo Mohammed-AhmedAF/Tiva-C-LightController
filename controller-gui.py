@@ -39,19 +39,18 @@ def connectByUART():
 
 connectBtn = Button(connectionFrame,text="Connect",command=connectByUART)
 
-connectionFrame.grid(row=0,column=1,sticky=W,padx=5)
-controlFrame.grid(row=0,column=0,sticky=W,padx=5)
-
+connectionFrame.grid(row=0,column=1,sticky=W+S+N,padx=5)
+controlFrame.grid(row=0,column=0,sticky=W+S+N,padx=5)
 
 connectByUART()
 
 #Elements placement
 durationSpin.grid(row=0,column=1,sticky=W,padx=10)
-durationLabel.grid(row=0,column=0,sticky=W)
-durationBtn.grid(row=0,column=2,sticky=W)
+durationLabel.grid(row=0,column=0,sticky=W,padx=5)
+durationBtn.grid(row=0,column=2,sticky=W,padx=5)
 
-connectBtn.grid(row=0,column=0,sticky=W+E)
-baudrateCmbox.grid(row=1,column=0,sticky=W+E)
+connectBtn.grid(row=0,column=0,sticky=W+E,padx=5,pady=5)
+baudrateCmbox.grid(row=1,column=0,sticky=W+E,padx=5,pady=5)
 
 statusLabel.grid(row=2,column=0,sticky=W+E,columnspan=3,padx=5)
 
