@@ -17,6 +17,9 @@ int main(void)
 	GPIO_vidSetPinDirection(GPIO_PORTB,GPIO_PIN0,GPIO_OUTPUT);
 	GPIO_vidSetPinDigEnable(GPIO_PORTB,GPIO_PIN0,GPIO_DEN_SET);
 	
+	GPIO_vidSetPinDirection(GPIO_PORTB,GPIO_PIN1,GPIO_OUTPUT);
+	GPIO_vidSetPinDigEnable(GPIO_PORTB,GPIO_PIN1,GPIO_DEN_SET);
+	
 	GPIO_vidSetPinDirection(GPIO_PORTA,GPIO_PIN0,GPIO_OUTPUT);
 
 	GPIO_vidSetPinDigEnable(GPIO_PORTA,GPIO_PIN0,GPIO_DEN_SET);
@@ -30,9 +33,10 @@ int main(void)
 	strctUARTConfig.u8ClockSource = UART_CLOCKSOURCE_RC;
 	
 	/*Initializing UART*/
-	UART_vidInit(&strctUARTConfig);
 	GPIOA->AFSEL |= 0x03;
 	GPIOA->PCTL |= 0x11;
+	UART_vidInit(&strctUARTConfig);
+	
 	UART_vidPutISRFunction(vidReceiveCommands);
 	
 	
@@ -48,12 +52,12 @@ int main(void)
 void vidReceiveCommands(void)
 {
 	u8 u8Byte = UART_u8GetReceivedByte();
-	if (u8Byte == 'h')
+	if (u8Byte == 'a')
 	{
-		GPIO_vidSetPinValue(GPIO_PORTB,GPIO_PIN0,STD_HIGH);
+		GPIO_vidTogglePin(GPIO_PORTB,GPIO_PIN0);
 	}
-	else 
+	else if (u8Byte == 'b')
 	{
-		GPIO_vidSetPinValue(GPIO_PORTB,GPIO_PIN0,STD_HIGH);
+		GPIO_vidTogglePin(GPIO_PORTB,GPIO_PIN1);
 	}
 }

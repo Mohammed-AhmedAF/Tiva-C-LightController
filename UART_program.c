@@ -58,7 +58,7 @@ void UART_vidInit(UARTConfig_t * UARTConfig)
 
 	
 	/*Enable interrupt*/
-	//UART0_IM |= 0x0010;
+	UART0_IM |= 0x0010;
 	
 }
 	

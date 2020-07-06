@@ -5,7 +5,7 @@
  *
  */
 
-#include "STD_TYPES.h"
+#include "Std_Types.h"
 #include "Macros.h"
 #include "GPIO_private.h"
 #include "GPIO_interface.h"
@@ -147,3 +147,28 @@ void GPIO_vidSetPinDigEnable(u8 u8PortNumCpy, u8 u8PinNumCpy, u8 u8DigEnable) {
 	}
 }
 
+void GPIO_vidTogglePin(u8 u8Port, u8 u8Pin)
+{
+	switch(u8Port)
+	{
+		case GPIO_PORTA:
+			TOGGLE_BIT(GPIOA_DATA,u8Pin);
+		break;
+		case GPIO_PORTB:
+			TOGGLE_BIT(GPIOB_DATA,u8Pin);
+		break;
+		case GPIO_PORTC:
+			TOGGLE_BIT(GPIOC_DATA,u8Pin);
+		break;
+		case GPIO_PORTD:
+			TOGGLE_BIT(GPIOD_DATA,u8Pin);
+			break;
+		case GPIO_PORTE:
+TOGGLE_BIT(GPIOE_DATA,u8Pin);
+			break;
+		case GPIO_PORTF:
+						TOGGLE_BIT(GPIOF_DATA,u8Pin);
+
+			break;
+	}
+}

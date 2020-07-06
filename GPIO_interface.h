@@ -4,6 +4,8 @@
 void GPIO_vidSetPinValue(u8 u8PortNumCpy,u8 u8PinNumCpy, u8 u8ValueCpy);
 void GPIO_vidSetPinDirection(u8 u8PortNumCpy, u8 u8PinCpy,u8 u8DirCpy);
 void GPIO_vidSetPinDigEnable(u8 u8PortNumCpy, u8 u8PinCpy, u8 u8DigEnable);
+void GPIO_vidTogglePin(u8 u8Port, u8 u8Pin);
+
 
 
 #define GPIO_PORTA 0
