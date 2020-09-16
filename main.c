@@ -10,7 +10,9 @@ void vidReceiveCommands(void);
 
 int main(void)
 {
+	/*LED on port B*/
 	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTB);
+	/*UART on port A*/
 	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTA);
 	SYSCNTRL_vidEnableUARTClock(SYSCNTRL_UART0);
 	
