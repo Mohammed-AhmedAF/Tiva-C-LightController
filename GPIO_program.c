@@ -164,11 +164,10 @@ void GPIO_vidTogglePin(u8 u8Port, u8 u8Pin)
 			TOGGLE_BIT(GPIOD_DATA,u8Pin);
 			break;
 		case GPIO_PORTE:
-TOGGLE_BIT(GPIOE_DATA,u8Pin);
+			TOGGLE_BIT(GPIOE_DATA,u8Pin);
 			break;
 		case GPIO_PORTF:
-						TOGGLE_BIT(GPIOF_DATA,u8Pin);
-
+			TOGGLE_BIT(GPIOF_DATA,u8Pin);
 			break;
 	}
 }
