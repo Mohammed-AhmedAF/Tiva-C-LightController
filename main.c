@@ -27,6 +27,7 @@ int main(void)
 	GPIO_vidSetPinDigEnable(GPIO_PORTA,GPIO_PIN0,GPIO_DEN_SET);
 	GPIO_vidSetPinDigEnable(GPIO_PORTA,GPIO_PIN1,GPIO_DEN_SET);
 	
+	/*UART Configuration*/
 	UARTConfig_t strctUARTConfig;
 	
 	strctUARTConfig.u8Fraction = 11;
