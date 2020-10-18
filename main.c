@@ -16,6 +16,7 @@ int main(void)
 	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTA);
 	SYSCNTRL_vidEnableUARTClock(SYSCNTRL_UART0);
 	
+	/*LED configuration*/
 	GPIO_vidSetPinDirection(GPIO_PORTB,GPIO_PIN0,GPIO_OUTPUT);
 	GPIO_vidSetPinDigEnable(GPIO_PORTB,GPIO_PIN0,GPIO_DEN_SET);
 	
