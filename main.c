@@ -45,9 +45,12 @@ int main(void)
 	
 	
 	/*UART receive interrupt*/
-			NVIC->IP[5] = 3 << 5;
-
+	/*Priority*/
+	NVIC->IP[5] = 3 << 5;
+	/*Enabling interrupt*/
 	NVIC->ISER[0] |= 0x00000020;
+	
+	/*Global interrupt enable*/
 	__enable_irq();
 
 	while(1);
