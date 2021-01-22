@@ -8,9 +8,15 @@ import serial
 
 def sendLED(ledNumber):
     if (ledNumber==0):
-        ser.write(b'a')
+        try:
+            ser.write(b'a')
+        except:
+            statusLabel['text'] = "Failed to send command."
     elif (ledNumber == 1):
-        ser.write(b'b')
+        try:
+            ser.write(b'b')
+        except:
+            statusLabel['text'] = "Failed to send command."
 
 def connectByUART():
     global ser
@@ -39,7 +45,8 @@ baudrate = 0
 
 root = Tk()
 root.title("Light Controller GUI")
-root.resizable(width=False,height=False)
+root.resizable(width=True,height=False)
+root.geometry("500x200")
 
 try:
     photo = PhotoImage(file="images/led.png")
