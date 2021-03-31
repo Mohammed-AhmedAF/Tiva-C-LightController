@@ -8,6 +8,8 @@
 
 void vidReceiveCommands(void);
 
+volatile u8 u8Byte;
+
 int main(void)
 {
 	/*LED on port B*/
@@ -58,7 +60,7 @@ int main(void)
 
 void vidReceiveCommands(void)
 {
-	u8 u8Byte = UART_u8GetReceivedByte();
+	u8Byte = UART_u8GetReceivedByte();
 	if (u8Byte == 'a')
 	{
 		GPIO_vidTogglePin(GPIO_PORTB,GPIO_PIN0);
