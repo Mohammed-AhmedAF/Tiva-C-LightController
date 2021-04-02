@@ -6,7 +6,7 @@ import platform
 import serial
 
 
-def sendLED(ledNumber):
+def sendLED(ledNumber: int):
     if (ledNumber==0):
         try:
             ser.write(b'a')
@@ -18,7 +18,7 @@ def sendLED(ledNumber):
         except:
             statusLabel['text'] = "Failed to send command."
 
-def connectByUART():
+def connectByUART() -> None:
     global ser
     global baudrate
     if (platform.system().startswith("Win")):
