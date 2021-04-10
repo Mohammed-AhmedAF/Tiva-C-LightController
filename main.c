@@ -7,7 +7,7 @@
 #include "TM4C123GH6PM.h"
 
 void vidReceiveCommands(void);
-
+/*Holding the received character from UART*/
 volatile u8 u8Byte;
 
 int main(void)
