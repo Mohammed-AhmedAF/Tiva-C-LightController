@@ -13,17 +13,17 @@ volatile u8 u8Byte;
 int main(void)
 {
 	/*LED on port B*/
-	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTB);
+	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTF);
 	/*UART on port A*/
 	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTA);
 	SYSCNTRL_vidEnableUARTClock(SYSCNTRL_UART0);
 	
 	/*LED configuration*/
-	GPIO_vidSetPinDirection(GPIO_PORTB,GPIO_PIN0,GPIO_OUTPUT);
-	GPIO_vidSetPinDigEnable(GPIO_PORTB,GPIO_PIN0,GPIO_DEN_SET);
+	GPIO_vidSetPinDirection(GPIO_PORTF,GPIO_PIN1,GPIO_OUTPUT);
+	GPIO_vidSetPinDigEnable(GPIO_PORTF,GPIO_PIN1,GPIO_DEN_SET);
 	
-	GPIO_vidSetPinDirection(GPIO_PORTB,GPIO_PIN1,GPIO_OUTPUT);
-	GPIO_vidSetPinDigEnable(GPIO_PORTB,GPIO_PIN1,GPIO_DEN_SET);
+	GPIO_vidSetPinDirection(GPIO_PORTF,GPIO_PIN2,GPIO_OUTPUT);
+	GPIO_vidSetPinDigEnable(GPIO_PORTF,GPIO_PIN2,GPIO_DEN_SET);
 	
 	GPIO_vidSetPinDirection(GPIO_PORTA,GPIO_PIN0,GPIO_OUTPUT);
 
@@ -50,8 +50,8 @@ int main(void)
 	/*Priority*/
 	NVIC->IP[5] = 3 << 5;
 	/*Enabling interrupt*/
-	NVIC->ISER[0] |= 0x00000020;
-	
+	NVIC_vidSetInterrupt(NVIC_UART0);
+
 	/*Global interrupt enable*/
 	__enable_irq();
 
@@ -63,10 +63,10 @@ void vidReceiveCommands(void)
 	u8Byte = UART_u8GetReceivedByte();
 	if (u8Byte == 'a')
 	{
-		GPIO_vidTogglePin(GPIO_PORTB,GPIO_PIN0);
+		GPIO_vidTogglePin(GPIO_PORTF,GPIO_PIN1);
 	}
 	else if (u8Byte == 'b')
 	{
-		GPIO_vidTogglePin(GPIO_PORTB,GPIO_PIN1);
+		GPIO_vidTogglePin(GPIO_PORTF,GPIO_PIN2);
 	}
 }
