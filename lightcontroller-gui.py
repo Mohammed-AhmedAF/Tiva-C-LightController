@@ -17,6 +17,12 @@ def sendLED(ledNumber: int):
             ser.write(b'b')
         except:
             statusLabel['text'] = "Failed to send command."
+    elif (ledNumber == 2):
+        try:
+            ser.write(b'c')
+        except:
+            statusLabel['text'] = "Failed to send command."
+
 
 def connectByUART() -> None:
     global ser
@@ -66,6 +72,9 @@ led0Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(0))
 led1Label = Label(controlFrame,text="LED 2")
 led1Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(1))
 
+led2Label = Label(controlFrame,text="LED 3")
+led2Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(2))
+
 baudrateCmbox = ttk.Combobox(connectionFrame,values=[9600,19200,38400,57600,115200],state="readonly")
 baudrateCmbox.current(0)
 portCmbox = ttk.Combobox(connectionFrame,values=["COM3","COM4","COM5","COM6","COM7","COM8","COM9","COM10","COM11","COM12","COM13"],state="readonly")
@@ -84,6 +93,9 @@ led0Btn.grid(row=0,column=1,columnspan=2,sticky=W,padx=5)
 
 led1Label.grid(row=1,column=0,sticky=W,padx=5)
 led1Btn.grid(row=1,column=1,columnspan=2,sticky=W,padx=5)
+
+led2Label.grid(row=2,column=0,sticky=W,padx=5)
+led2Btn.grid(row=2,column=1,columnspan=2,sticky=W,padx=5)
 
 connectBtn.grid(row=2,column=0,sticky=W+E,padx=5,pady=5)
 baudrateCmbox.grid(row=1,column=0,sticky=W+E,padx=5,pady=5)

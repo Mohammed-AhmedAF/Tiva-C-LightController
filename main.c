@@ -4,11 +4,10 @@
 #include "UART_interface.h"
 #include "GPIO_interface.h"
 #include "SYSCNTRL_interface.h"
+#include "APP_interface.h"
 #include "TM4C123GH6PM.h"
 
-void vidReceiveCommands(void);
-/*Holding the received character from UART*/
-volatile u8 u8Byte;
+
 
 int main(void)
 {
@@ -24,6 +23,9 @@ int main(void)
 	
 	GPIO_vidSetPinDirection(GPIO_PORTF,GPIO_PIN2,GPIO_OUTPUT);
 	GPIO_vidSetPinDigEnable(GPIO_PORTF,GPIO_PIN2,GPIO_DEN_SET);
+	
+	GPIO_vidSetPinDirection(GPIO_PORTF,GPIO_PIN3,GPIO_OUTPUT);
+	GPIO_vidSetPinDigEnable(GPIO_PORTF,GPIO_PIN3,GPIO_DEN_SET);
 	
 	GPIO_vidSetPinDirection(GPIO_PORTA,GPIO_PIN0,GPIO_OUTPUT);
 
@@ -61,15 +63,4 @@ int main(void)
 	while(1);
 }
 
-void vidReceiveCommands(void)
-{
-	u8Byte = UART0_u8GetReceivedByte();
-	if (u8Byte == 'a')
-	{
-		GPIO_vidTogglePin(GPIO_PORTF,GPIO_PIN1);
-	}
-	else if (u8Byte == 'b')
-	{
-		GPIO_vidTogglePin(GPIO_PORTF,GPIO_PIN2);
-	}
-}
+
