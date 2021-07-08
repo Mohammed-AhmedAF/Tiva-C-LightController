@@ -68,7 +68,7 @@ led1Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(1))
 
 baudrateCmbox = ttk.Combobox(connectionFrame,values=[9600,19200,38400,57600,115200],state="readonly")
 baudrateCmbox.current(0)
-portCmbox = ttk.Combobox(connectionFrame,values=["COM3","COM4"],state="readonly")
+portCmbox = ttk.Combobox(connectionFrame,values=["COM3","COM4","COM5","COM6","COM7","COM8","COM9","COM10","COM11","COM12","COM13"],state="readonly")
 portCmbox.current(1)
 
 connectBtn = Button(connectionFrame,text="Connect",command=connectByUART)

@@ -34,17 +34,20 @@ int main(void)
 	UARTConfig_t strctUARTConfig;
 	
 	strctUARTConfig.u8Fraction = 11;
-	strctUARTConfig.u8Integer = 104;
+	strctUARTConfig.u16Integer = 104;
 	strctUARTConfig.u8WordLength = UART_WORDSIZE_8;
 	strctUARTConfig.u8ClockSource = UART_CLOCKSOURCE_RC;
+	strctUARTConfig.u8RxTx = UART_RXTX_BOTH;
+	strctUARTConfig.u8InterruptEnabled = UART_INTERRUPT_ENABLED;
+	strctUARTConfig.u8HighSpeedEnabled = UART_HIGHSPEED_DIV16;
+	strctUARTConfig.ptrF = vidReceiveCommands;
 	
 	/*Initializing UART*/
-	GPIOA->AFSEL |= 0x03;
-	GPIOA->PCTL |= 0x11;
-	UART_vidInit(&strctUARTConfig);
-	
-	UART_vidPutISRFunction(vidReceiveCommands);
-	
+	GPIO_vidSelectAlterFunction(GPIO_PORTA,GPIO_PIN0);
+	GPIO_vidSelectAlterFunction(GPIO_PORTA,GPIO_PIN1);
+	GPIO_vidConfigPortControl(GPIO_PORTA,GPIO_PIN0,0x11);
+	UART0_vidInit(&strctUARTConfig);
+		
 	
 	/*UART receive interrupt*/
 	/*Priority*/
@@ -60,7 +63,7 @@ int main(void)
 
 void vidReceiveCommands(void)
 {
-	u8Byte = UART_u8GetReceivedByte();
+	u8Byte = UART0_u8GetReceivedByte();
 	if (u8Byte == 'a')
 	{
 		GPIO_vidTogglePin(GPIO_PORTF,GPIO_PIN1);
