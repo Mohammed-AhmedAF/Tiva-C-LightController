@@ -51,8 +51,7 @@ baudrate = 0
 
 root = Tk()
 root.title("Light Controller GUI")
-root.resizable(width=True,height=False)
-root.geometry("500x200")
+root.resizable(width=False,height=False)
 
 try:
     photo = PhotoImage(file="images/led.png")
@@ -89,13 +88,13 @@ connectByUART()
 
 #Elements placement
 led0Label.grid(row=0,column=0,sticky=W,padx=5)
-led0Btn.grid(row=0,column=1,columnspan=2,sticky=W,padx=5)
+led0Btn.grid(row=0,column=2,columnspan=2,sticky=W+E,padx=5)
 
 led1Label.grid(row=1,column=0,sticky=W,padx=5)
-led1Btn.grid(row=1,column=1,columnspan=2,sticky=W,padx=5)
+led1Btn.grid(row=1,column=2,columnspan=2,sticky=W+E,padx=5)
 
 led2Label.grid(row=2,column=0,sticky=W,padx=5)
-led2Btn.grid(row=2,column=1,columnspan=2,sticky=W,padx=5)
+led2Btn.grid(row=2,column=2,columnspan=2,sticky=W+E,padx=5)
 
 connectBtn.grid(row=2,column=0,sticky=W+E,padx=5,pady=5)
 baudrateCmbox.grid(row=1,column=0,sticky=W+E,padx=5,pady=5)
