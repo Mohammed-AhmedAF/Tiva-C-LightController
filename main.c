@@ -35,6 +35,7 @@ int main(void)
 	/*UART Configuration*/
 	UARTConfig_t strctUARTConfig;
 	
+	/*Integer and fraction value for 9600 baudrate*/
 	strctUARTConfig.u8Fraction = 11;
 	strctUARTConfig.u16Integer = 104;
 	strctUARTConfig.u8WordLength = UART_WORDSIZE_8;
