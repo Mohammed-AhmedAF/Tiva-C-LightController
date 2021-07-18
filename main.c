@@ -54,7 +54,7 @@ int main(void)
 	
 	/*UART receive interrupt*/
 	/*Priority*/
-	NVIC->IP[5] = 3 << 5;
+	NVIC_vidSetPriority(NVIC_UART0,3);
 	/*Enabling interrupt*/
 	NVIC_vidSetInterrupt(NVIC_UART0);
 

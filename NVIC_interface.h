@@ -4,7 +4,9 @@
 /*Function declarations*/
 void NVIC_vidSetInterrupt(u8 u8InterruptID);
 void NVIC_vidClearInterrupt(u8 u8InterruptID);
-
+void NVIC_vidSetPending(u8 u8InterruptID);
+void NVIC_vidClearPending(u8 u8InterruptID);
+void NVIC_vidSetPriority(u8 u8InterruptID, u8 u8InterruptPriority);
 
 /*Interrupt IDs*/
 #define NVIC_GPIOA 0
@@ -14,5 +16,6 @@ void NVIC_vidClearInterrupt(u8 u8InterruptID);
 #define NVIC_GPIOE 4
 #define NVIC_UART0 5
 #define NVIC_UART1 6
+#define NVIC_GPIOF 30
 
 #endif
