@@ -4,7 +4,7 @@
 #include "APP_interface.h"
 
 /*Holding the received character from UART*/
-volatile u8 u8Byte;
+static volatile u8 u8Byte;
 
 void vidReceiveCommands(void)
 {
