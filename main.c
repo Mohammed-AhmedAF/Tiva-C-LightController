@@ -11,7 +11,7 @@
 
 int main(void)
 {
-	/*LED on port B*/
+	/*LED on port F*/
 	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTF);
 	/*UART on port A*/
 	SYSCNTRL_vidEnableGPIOClock(SYSCNTRL_GPIO_PORTA);
