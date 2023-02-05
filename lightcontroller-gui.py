@@ -4,6 +4,8 @@ from tkinter import *
 from tkinter import ttk
 import platform
 import serial
+import ttkbootstrap as ttkp
+from ttkbootstrap.constants import *
 
 
 def sendLED(ledNumber: int):
@@ -49,7 +51,7 @@ def connectByUART() -> None:
 ser = serial.Serial()
 baudrate = 0
 
-root = Tk()
+root = ttkp.Window(themename="darkly")
 root.title("Light Controller GUI")
 root.resizable(width=False,height=False)
 
@@ -79,7 +81,7 @@ baudrateCmbox.current(0)
 portCmbox = ttk.Combobox(connectionFrame,values=["COM3","COM4","COM5","COM6","COM7","COM8","COM9","COM10","COM11","COM12","COM13"],state="readonly")
 portCmbox.current(1)
 
-connectBtn = Button(connectionFrame,text="Connect",command=connectByUART)
+connectBtn = ttkp.Button(connectionFrame,text="Connect",command=connectByUART,bootstyle=(SUCCESS))
 
 connectionFrame.grid(row=0,column=3,sticky=W+S+N+E,padx=5)
 controlFrame.grid(row=0,column=0,sticky=W+S+N+E,padx=5,columnspan=3)
