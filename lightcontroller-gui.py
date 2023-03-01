@@ -8,7 +8,7 @@ import ttkbootstrap as ttkp
 from ttkbootstrap.constants import *
 
 
-def sendLED(ledNumber: int):
+def sendLED(ledNumber: int) -> None:
     if (ledNumber==0):
         try:
             ser.write(b'a')
