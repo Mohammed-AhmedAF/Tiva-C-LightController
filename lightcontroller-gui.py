@@ -105,5 +105,6 @@ portCmbox.grid(row=0,column=0,sticky=W+E,padx=5,pady=5)
 statusLabel.grid(row=2,column=0,sticky=W+E,columnspan=3,padx=5)
 osLabel.grid(row=2,column=3,sticky=W+E,padx=5,pady=5)
 
-root.mainloop()
+if __name__ == "__main__":
+    root.mainloop()
 
