@@ -8,7 +8,6 @@ import serial
 import ttkbootstrap as ttkp
 from ttkbootstrap.constants import *
 
-
 def sendLED(ledNumber: int) -> None:
     if (ledNumber==0):
         try:
@@ -60,6 +59,9 @@ root = ttkp.Window(themename="darkly")
 root.title("Light Controller GUI")
 root.resizable(width=False,height=False)
 
+ports = ["COM3","COM4","COM5","COM6","COM7","COM8","COM9","COM10","COM11","COM12","COM13"]
+buadrates = [9600,19200,38400,57600,115200]
+
 try:
     photo = PhotoImage(file="images/led.png")
     root.iconphoto(False,photo)
@@ -81,9 +83,9 @@ led1Btn = Button(controlFrame,text="Toggle",command= lambda: makeThreads(sendLED
 led2Label = Label(controlFrame,text="LED 3")
 led2Btn = Button(controlFrame,text="Toggle",command= lambda: makeThreads(sendLED,2))
 
-baudrateCmbox = ttk.Combobox(connectionFrame,values=[9600,19200,38400,57600,115200],state="readonly")
+baudrateCmbox = ttk.Combobox(connectionFrame,values=buadrates,state="readonly")
 baudrateCmbox.current(0)
-portCmbox = ttk.Combobox(connectionFrame,values=["COM3","COM4","COM5","COM6","COM7","COM8","COM9","COM10","COM11","COM12","COM13"],state="readonly")
+portCmbox = ttk.Combobox(connectionFrame,values=ports,state="readonly")
 portCmbox.current(1)
 
 connectBtn = ttkp.Button(connectionFrame,text="Connect",command=connectByUART,bootstyle=(SUCCESS))
