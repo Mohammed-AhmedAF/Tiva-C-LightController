@@ -2,6 +2,7 @@
 
 from tkinter import *
 from tkinter import ttk
+import threading
 import platform
 import serial
 import ttkbootstrap as ttkp
@@ -47,6 +48,10 @@ def connectByUART() -> None:
         else:
             statusLabel['text'] = "Connection already opened!"
 
+#Using threads to improce the performance of GUI
+def makeThreads(p  , arg) -> None:
+    threading.Thread(target=p,args=[arg]).start()
+
 #Global variables
 ser = serial.Serial()
 baudrate = 0
@@ -68,13 +73,13 @@ connectionFrame = LabelFrame(root,text="Connection")
 controlFrame = LabelFrame(root,text="Control")
 
 led0Label = Label(controlFrame,text="LED 1")
-led0Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(0))
+led0Btn = Button(controlFrame,text="Toggle",command= lambda: makeThreads(sendLED,0))
 
 led1Label = Label(controlFrame,text="LED 2")
-led1Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(1))
+led1Btn = Button(controlFrame,text="Toggle",command= lambda: makeThreads(sendLED,1))
 
 led2Label = Label(controlFrame,text="LED 3")
-led2Btn = Button(controlFrame,text="Toggle",command= lambda: sendLED(2))
+led2Btn = Button(controlFrame,text="Toggle",command= lambda: makeThreads(sendLED,2))
 
 baudrateCmbox = ttk.Combobox(connectionFrame,values=[9600,19200,38400,57600,115200],state="readonly")
 baudrateCmbox.current(0)
@@ -105,5 +110,6 @@ portCmbox.grid(row=0,column=0,sticky=W+E,padx=5,pady=5)
 statusLabel.grid(row=2,column=0,sticky=W+E,columnspan=3,padx=5)
 osLabel.grid(row=2,column=3,sticky=W+E,padx=5,pady=5)
 
-root.mainloop()
+if __name__ == "__main__":
+    root.mainloop()
 
